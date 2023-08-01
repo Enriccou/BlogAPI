@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 export { Post };
 
 const Post = mongoose.model('Post', {
+// Modelo de estrutura de dados para um novo post
 
     title: {
         type: String,
@@ -17,4 +18,3 @@ const Post = mongoose.model('Post', {
     },
 
 });
-// O código acima é um modelo de como deve ser criado um modelo de dados no Mongoose.

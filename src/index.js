@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 
 import { router } from './Routes/MainRoutes.js';
 
-const PORT = 3000;
 const app = express();
 
 app.use(express.json());
@@ -13,6 +12,7 @@ app.use(router);
 app.use('/', router);
 
 try {
+//Tentativa de conexão com o banco de dados
 
     mongoose.connect('mongodb+srv://Enriccou:150620@blogapi.bpnis0s.mongodb.net/?retryWrites=true&w=majority', {
         useNewUrlParser: true,
@@ -25,6 +25,7 @@ try {
 
 }
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`);
+// Inicialização do servidor local em express
+app.listen(3000, () => {
+    console.log(`Server is running on port http://localhost:${3000}`);
 });
