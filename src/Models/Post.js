@@ -16,5 +16,22 @@ const Post = mongoose.model('Post', {
         type: String,
         required: true,
     },
+    references: {
+        type: Array,
+        required: false,
+    },
+    tag: {
+        type: Array,
+        required: false,
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+    },
+    hour: {
+        type: String,
+        default: new Date().toLocaleTimeString(),
+    },
+
 
 });

@@ -12,7 +12,7 @@ app.use(router);
 app.use('/', router);
 
 try {
-//Tentativa de conexão com o banco de dados
+//Tentativa de conexão com o banco de dados mongoDB utilizando meu usuário e senha
 
     mongoose.connect('mongodb+srv://Enriccou:150620@blogapi.bpnis0s.mongodb.net/?retryWrites=true&w=majority', {
         useNewUrlParser: true,

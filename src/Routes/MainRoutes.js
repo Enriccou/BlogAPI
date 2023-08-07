@@ -48,7 +48,7 @@ router.post('/insert', async (req, res) => {
     try {
         const body = req.body;
 
-        const response = await new Post(body).save();
+        const response = await new Post.create(body);
 
         res.json({ error: false, Post: response });
 
