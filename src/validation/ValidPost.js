@@ -1,100 +1,102 @@
-function PostValidation (data){
+export { PostValidation }
+
+function PostValidation(body) {
     const errors = {};
 
-    ValidTitle(data, errors);
-    ValidContent(data, errors);
-    ValidAuthor(data, errors);
-    ValidReferences(data, errors);
-    ValidTag(data, errors);
-    ValidDate(data, errors);
-    ValidHour(data, errors);
+    ValidTitle(body, errors);
+    ValidContent(body, errors);
+    ValidAuthor(body, errors);
+    //ValidReferences(body, errors);
+    //ValidTag(body, errors);
+    ValidDate(body, errors);
+    ValidHour(body, errors);
 
     return errors;
 
 }
 
-function ValidTitle (data, errors){
+function ValidTitle(body, errors) {
 
-    if(!data.title){
-        errors.title = 'Title is required';
+    if (!body.title) {
+        errors.title = 'Title is required because it is the title of the post';
     } else {
-        if(data.title.length < 5){
+        if (body.title.length < 5) {
             errors.title = 'Title must be at least 5 characters long';
         }
-        if (data.title.length > 50){
+        if (body.title.length > 50) {
             errors.title = 'Title must be less than 50 characters long';
         }
     }
 }
 
-function ValidContent (data, errors){
+function ValidContent(body, errors) {
 
-    if (!data.content){
+    if (!body.content) {
         errors.content = 'Content is required';
     } else {
-        if (data.content.length < 10){
+        if (body.content.length < 10) {
             errors.content = 'Content must be at least 10 characters long';
         }
-        if (data.content.length > 5000){
+        if (body.content.length > 5000) {
             errors.content = 'Content must be less than 5000 characters long';
         }
     }
 }
 
-function ValidAuthor (data, errors){
+function ValidAuthor(body, errors) {
 
-    if (!data.author){
+    if (!body.author) {
         errors.author = 'Author is required';
     } else {
-        if(data.authot.length < 20){
+        if (body.author.length < 5) {
             errors.author = 'Author must be at least 20 characters long';
         }
-        if (data.author.length > 50){
+        if (body.author.length > 50) {
             errors.author = 'Author must be less than 50 characters long';
         }
     }
 }
 
-function ValidReferences (data, errors){
+function ValidReferences(body, errors) {
 
-    if (data.references){
+    if (body.references) {
         errors.references = 'References is required';
     } else {
 
-        if (data.references.length < 1){
-            errors.references = 'References must be less than 5 itens long';
+        if (body.references.length < 1) {
+            errors.references = 'References must be less than 1 itens long';
         }
-        if (data.references.length > 20){
+        if (body.references.length > 20) {
             errors.references = 'References must be less than 50 itens long';
         }
     }
 }
 
-function ValidTag (data, errors){
+function ValidTag(body, errors) {
 
-    if (data.tag){
+    if (body.tag) {
         errors.tag = 'Tag is required';
     } else {
 
-        if (data.tag.length < 1){
-            errors.tag = 'Tag must be less than 5 itens long';
+        if (body.tag.length <= 1) {
+            errors.tag = 'Tag must be less than 1 itens long';
         }
-        if (data.tag.length > 20){
+        if (body.tag.length > 20) {
             errors.tag = 'Tag must be less than 50 itens long';
         }
     }
 }
 
-function ValidDate (data, errors){
+function ValidDate(body, errors) {
 
-    if (data.date){
+    if (body.date) {
         errors.date = 'Date is required';
     }
 }
 
-function ValidHour (data, errors){
+function ValidHour(body, errors) {
 
-    if (data.hour){
+    if (body.hour) {
         errors.hour = 'Hour is required';
     }
 }
