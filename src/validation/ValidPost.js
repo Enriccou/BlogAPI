@@ -6,8 +6,8 @@ function PostValidation(body) {
     ValidTitle(body, errors);
     ValidContent(body, errors);
     ValidAuthor(body, errors);
-    //ValidReferences(body, errors);
-    //ValidTag(body, errors);
+    ValidReferences(body, errors);
+    ValidTag(body, errors);
     ValidDate(body, errors);
     ValidHour(body, errors);
 
@@ -59,14 +59,16 @@ function ValidAuthor(body, errors) {
 
 function ValidReferences(body, errors) {
 
-    if (body.references) {
+    let references = [...body.references];
+
+    if (!references) {
         errors.references = 'References is required';
     } else {
 
-        if (body.references.length < 1) {
-            errors.references = 'References must be less than 1 itens long';
+        if (references.length < 3) {
+            errors.references = 'References must be less than 3 itens long';
         }
-        if (body.references.length > 20) {
+        if (references.length > 20) {
             errors.references = 'References must be less than 50 itens long';
         }
     }
@@ -74,15 +76,17 @@ function ValidReferences(body, errors) {
 
 function ValidTag(body, errors) {
 
-    if (body.tag) {
-        errors.tag = 'Tag is required';
+    let tags = [...body.tags];
+
+    if (!tags) {
+        errors.tags = 'Tag is required';
     } else {
 
-        if (body.tag.length <= 1) {
-            errors.tag = 'Tag must be less than 1 itens long';
+        if (tags.length < 3) {
+            errors.tags = 'Tag must be less than 1 itens long';
         }
-        if (body.tag.length > 20) {
-            errors.tag = 'Tag must be less than 50 itens long';
+        if (tags.length > 20) {
+            errors.tags = 'Tag must be less than 50 itens long';
         }
     }
 }

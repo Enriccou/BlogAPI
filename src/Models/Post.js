@@ -20,7 +20,7 @@ const Post = mongoose.model('Post', {
         type: Array,
         required: false,
     },
-    tag: {
+    tags: {
         type: Array,
         required: false,
     },
